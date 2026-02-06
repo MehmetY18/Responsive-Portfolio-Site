@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portföy</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"> 
+</head>
+<body>
+    <!--Header-->
+    <header class="header">
+        <img src="images/ProfilePicture-New.png" alt="Profil Resmi" class="profile-img">
+        <h1>Mehmet Yücel</h1>
+        <p>I'm <span id="typewriter"></span></p>
+    </header>
+    <!--Navigasyon bar-->
+    <nav class="nav">
+        <ul>
+            <li><a href="#hakkimda">About me</a></li>
+            <li><a href="#beceriler">Skills</a></li>
+            <li><a href="#projeler">Projects</a></li>
+            <li><a href="#iletisim">Contact</a></li>
+            <li><button id="theme-toggle" style="cursor:pointer; background:none; border:none; font-size:1.2rem;">🌓</button></li>
+        </ul>
+    </nav>
+    <!--Ana içerik-->
+    <main class="container" id="hakkimda">
+        <!--Hakkımda-->
+        <section  class="section" data-aos="fade-up">
+            <h2>About me</h2>
+            <p>"I am a first-year Computer Programming student, passionate about turning logic into code.
+                 I specialize in C#, Python, and Web Technologies, focusing on building practical solutions and continuous learning. 
+                 I am a disciplined problem-solver and a dedicated team player, ready to contribute to innovative software projects."
+            </p>
+                   
+                     
+            <a name="beceriler"></a>
+        </section>
+        <!--SKILLS-->
+       
+        <section class="section" data-aos="fade-up">
+            <h2>Skills</h2>
+           <div class="skills">
+            <span class="skill">HTML</span>
+            <span class="skill">CSS</span>
+            <span class="skill">C#</span>
+            <span class="skill">Java</span>
+            <span class="skill">PHP</span>
+           </div> 
+
+        </section>
+       
+    <!-- PROJELER -->
+        <section id="projeler" class="pro-section" data-aos="fade-up">
+            <h2>My Projects</h2>
+            <div class="projects">
+                <div class="project-card" data-aos="zoom-in">
+                    <h3>E-Commerce Website</h3>
+                    <img src="images/Site-HomePage.png" alt="Project-Home-Page" data-aos="zoom-in">
+                    <p>A static e-commerce platform focused on user experience, built with HTML and CSS.</p>
+                    <div class="view"><a href="https://github.com/MehmetY18/Responsive-E-commerce-website">Viev Project</a></div>
+                </div>
+
+                <div class="project-card" data-aos="zoom-in">
+                    <h3>Rent A Car</h3>
+                    <img src="images/arac-filosu.png" alt="Project-Car-Fleet">
+                    <p>A car rental management system developed with C# and Entity Framework, focusing on database management and CRUD operations</p>
+                    <div class="view"><a href="https://github.com/MehmetY18/AracKiralama-V1">View Project</a></div>
+                </div>
+
+                <div class="project-card-vertical" data-aos="zoom-in">
+                    <h3>Mobile Travel Guide</h3>
+                    <div class="mobile-screens">
+                        <img src="images/mobile-1.jpg" alt="Ekran 1">
+                        <img src="images/mobile-2.jpg" alt="Ekran 2">
+                    </div>
+                 
+                    <p>A mobile travel guide application developed using Java and Android Studio for a seamless user experience</p>
+                    <div class="view"><a href="https://github.com/MehmetY18/GeziRehberi">View Project</a></div>
+                </div>
+
+               
+            </div>
+        </section>
+
+        <section id="iletisim" class="section contact-section" data-aos="fade-up">
+    <h2>Contact me!</h2>
+    <p>You can always contact me for new projects, job offers, or just to say hello..</p>
+    <div class="contact-container" data-aos="zoom-in">
+        <a href="mailto:mehmet.yucel.18.tr@gmail.com" class="contact-button">
+            
+            Email Me
+        </a>
+        <div class="social-links-footer">
+            <a href="https://github.com/MehmetY18" target="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/in/mehmet-y%C3%BCcel-95b2a3264/" target="_blank">LinkedIn</a>
+        </div>
+    </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <p>&copy; 2025 Mehmet Yücel. All Rights Reserved</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 1000, // Animasyon hızı (1 saniye)
+    once: true      // Sadece aşağı inerken bir kez çalışsın
+  });
+</script>
+
+<script>
+    const toggleBtn = document.getElementById('theme-toggle');
+const body = document.body;
+
+toggleBtn.addEventListener('click', () => {
+    if (body.getAttribute('data-theme') === 'dark') {
+        body.removeAttribute('data-theme');
+        localStorage.setItem('theme', 'light');
+    } else {
+        body.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+    }
+});
+
+// Sayfa yenilense de seçimi hatırla
+if (localStorage.getItem('theme') === 'dark') {
+    body.setAttribute('data-theme', 'dark');
+}
+
+
+
+
+
+
+
+
+
+
+const textElement = document.getElementById('typewriter');
+const phrases = ['a Software Developer', 'a Computer Programmer', 'a Technology Enthusiast'];
+let phraseIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+let typeSpeed = 180;
+
+function type() {
+    const currentPhrase = phrases[phraseIndex];
+    
+    if (isDeleting) {
+        textElement.textContent = currentPhrase.substring(0, charIndex - 1);
+        charIndex--;
+        typeSpeed = 100;
+    } else {
+        textElement.textContent = currentPhrase.substring(0, charIndex + 1);
+        charIndex++;
+        typeSpeed = 200;
+    }
+
+    if (!isDeleting && charIndex === currentPhrase.length) {
+        isDeleting = true;
+        typeSpeed = 2000; // Kelime bittiğinde 2 saniye bekle
+    } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        phraseIndex = (phraseIndex + 1) % phrases.length;
+        typeSpeed = 500;
+    }
+
+    setTimeout(type, typeSpeed);
+}
+
+document.addEventListener('DOMContentLoaded', type);
+</script>
+
+</body>
+</html>
