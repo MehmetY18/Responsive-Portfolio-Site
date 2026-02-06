@@ -35,6 +35,10 @@ main, .container, #wrapper {
     overflow-x: hidden; 
 }
 
+.container, .section {
+    overflow: visible !important;
+}
+
 
 html {
     scroll-behavior: smooth;
