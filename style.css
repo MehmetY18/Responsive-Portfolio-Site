@@ -26,11 +26,20 @@ body{
     color: var(--text-color);
     font-family: 'Inter', sans-serif;
     transition: all 0.4s ease;
+    max-width: 100%;
+    position: relative;
 
 }
 
+main, .container, #wrapper { 
+    overflow-x: hidden; 
+}
+
+
 html {
     scroll-behavior: smooth;
+    max-width: 100%;
+    position: relative;
 }
 
 .header{
@@ -66,6 +75,7 @@ html {
     z-index: 1000;
     background: #3e4041;
     padding: 15px 0;
+    width: 100%;
 }
 
 .nav ul{
@@ -104,7 +114,6 @@ html {
     background-color: var(--card-bg) !important; 
     color: var(--text-color); 
     padding: 40px;
-    margin-bottom: 30px;
     border-radius: 15px;
     box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
     margin-bottom: 50px;
@@ -124,8 +133,8 @@ html {
     height: 600px;
     padding: 30px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0 auto;
-   border: 1px solid rgba(0,0,0,0.1);
+    margin: 0 auto !important;
+    border: 1px solid rgba(0,0,0,0.1);
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
@@ -243,37 +252,7 @@ html {
     color: #858585 !important;
 }
 
-.project-card {
-   display: flex;
-   flex-direction: column;
-   justify-content: space-between;
-   transition: transform 0.3s ease;
-   border-radius: 15px;
-   height: 600px;
-   padding: 30px;
-   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-   margin: 0 auto;
-   background: white;
-   border: 1px solid #e2e8f0;
-   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-}
 
-
-
-.project-card-vertical{
-   display: flex;
-   flex-direction: column;
-   justify-content: space-between;
-   transition: transform 0.3s ease;
-   border-radius: 15px;
-   height: 600px;
-   padding: 30px;
-   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-   margin: 0 auto;
-   background: white;
-   border: 1px solid #e2e8f0;
-   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-}
 
 .mobile-screens {
     display: flex;
@@ -381,4 +360,64 @@ html {
     0% { border-color: transparent; }
     50% { border-color: var(--primary-color); }
     100% { border-color: transparent; }
+}
+
+
+
+
+@media (max-width: 768px) {
+    
+    
+    .container {
+        padding: 20px 15px; /* Kenar boşluklarını daralt */
+    }
+
+    .section {
+        padding: 25px 15px; /* İç boşluğu azalt */
+    }
+
+    /* 2. Kartların Sabit Boyutlarını İptal Et (Kritik!) */
+    .project-card, .project-card-vertical {
+        width: 100% !important;
+        height: auto !important; 
+        min-height: auto;
+        padding: 20px;
+        margin: 0 0 20px 0;
+    }
+
+    /* 3. Resimleri ve İçeriği Esnet */
+    .project-card img, .project-card-vertical img {
+        height: 200px; 
+        width: 100%;
+        object-fit: cover;
+    }
+
+    /* 4. Grid Yapısını Tek Kolona Düşür */
+    .projects {
+        grid-template-columns: 1fr !important; 
+        gap: 20px;
+    }
+
+    
+    .nav ul {
+        gap: 15px;
+        font-size: 14px;
+    }
+
+  
+    .header h1 {
+        font-size: 28px;
+    }
+}
+
+
+@media (max-width: 400px) {
+    .nav ul {
+        gap: 8px;
+        font-size: 12px;
+    }
+    
+    .view {
+        width: 100%;
+    }
 }
